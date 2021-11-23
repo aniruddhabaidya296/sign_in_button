@@ -102,4 +102,6 @@ SignInButton.mini(
 - elevation
 - shape
 - width  // You can change the value of width when the text size becomes too small.
+- buttonWidth // A width can be added to the mini SignInButton
+- margin //You can add margin to the mini button
 - padding  // Padding value is automatically adjusted according to the button size. You can give a value if you want
