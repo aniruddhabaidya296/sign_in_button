@@ -49,6 +49,14 @@ class SignInButton extends StatelessWidget {
   double? width;
 
   //not required, Gets value according to buttonSize.
+  /// You can change the value of [width] when the text size becomes too small.
+  double? buttonWidth;
+
+  //not required, Gets value according to buttonSize.
+  /// You can change the value of [margin] when you require horizontal spacing.
+  EdgeInsets? margin;
+
+  //not required, Gets value according to buttonSize.
   /// [padding] set the button's padding value.
   double? padding;
 
@@ -92,7 +100,9 @@ class SignInButton extends StatelessWidget {
     this.btnColor,
     this.btnDisabledColor,
     this.elevation: 5.0,
+    this.buttonWidth,
     this.padding,
+    this.margin,
   }) : mini = true;
 
   bool get _enabled => onPressed != null;
@@ -132,16 +142,20 @@ class SignInButton extends StatelessWidget {
               ),
             ),
           )
-        : MaterialButton(
-            onPressed: onPressed,
-            color: btnColor,
-            disabledColor: btnDisabledColor,
-            child: _image,
-            elevation: elevation,
-            visualDensity: VisualDensity(horizontal: -4),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            padding: EdgeInsets.all(padding!),
-            shape: CircleBorder(),
+        : Container(
+            margin: this.margin,
+            child: MaterialButton(
+              minWidth: buttonWidth,
+              onPressed: onPressed,
+              color: btnColor,
+              disabledColor: btnDisabledColor,
+              child: _image,
+              elevation: elevation,
+              visualDensity: VisualDensity(horizontal: -4),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              padding: EdgeInsets.all(padding!),
+              shape: CircleBorder(),
+            ),
           );
   }
 
